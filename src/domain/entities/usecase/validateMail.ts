@@ -1,9 +1,9 @@
-import { MailParms } from '../protocols/IParmsMail'
+import { MailParms } from '../repositores/IParmsMail'
 export default class ValidateMail {
 
     isMailValid(parm:MailParms){
-        if (!parm.email) return false;
-        if (typeof parm.email === 'string') return true;
+        if (!parm.mail) return false;
+        if (typeof parm.mail === 'string') return true;
         return false
     }
 }

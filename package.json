@@ -1,11 +1,11 @@
 {
-  "name": "CLEAN-ARCHITECTURE",
+  "name": "clean-architecture",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "echo \"Error: no test specified\" && exit 1",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/Fernandopinage/CLEAN-ARCHITECTURE#readme",
   "devDependencies": {
+    "@types/mocha": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
     "jest": "^29.3.0",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   },
   "dependencies": {

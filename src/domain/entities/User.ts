@@ -4,6 +4,7 @@ export class User{
 
     id: number | undefined;
     name: string;
+    mail:string;
     age: number;
     sexo: string;
     cpf: string;
@@ -12,6 +13,7 @@ export class User{
     constructor(private parms:IParms){
         this.id = parms.id;
         this.name = parms.name;
+        this.mail = parms.mail;
         this.age = parms.age;
         this.sexo = parms.sexo;
         this.cpf = parms.cpf;

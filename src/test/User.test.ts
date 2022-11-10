@@ -9,6 +9,7 @@ describe('Validate the of mail', () => {
         const parms = {
             id: 1,
             name: 'luiz fernando',
+            mail:'luizfernandoluck@hotmail.com',
             age: 30,
             sexo: 'M',
             cpf: '00496334220',

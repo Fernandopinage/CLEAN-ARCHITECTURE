@@ -1,4 +1,4 @@
-import { IParms } from '../entities/repositore/IParms'
+import { IUserParms } from './repositore/IUserParms'
 
 export class User{
 
@@ -10,7 +10,7 @@ export class User{
     cpf: string;
     rg: string;
 
-    constructor(private parms:IParms){
+    constructor(private parms:IUserParms){
         this.id = parms.id;
         this.name = parms.name;
         this.mail = parms.mail;
@@ -20,7 +20,7 @@ export class User{
         this.rg = parms.rg;
     }
 
-    static create(params: IParms): User {
+    static create(params: IUserParms): User {
 		return new User(params);
 	}
 }

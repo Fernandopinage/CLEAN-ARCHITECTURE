@@ -1,4 +1,4 @@
-export interface IParms {
+export interface IUserParms {
 
     id?: number,
     name: string,

@@ -1,12 +1,10 @@
-import { UserInputBoundary } from '../../boundaries/UserInputBoundary'
-import { UserOutputBoundary } from '../../boundaries/UserOutputBoundary'
+import { UserInputBoundary } from './boundaries/UserInputBoundary'
+import { UserOutputBoundary } from './boundaries/UserOutputBoundary'
 import { User } from '../../../domain/entities/User';
 
 export class CreateUser{
 
     execute(input:UserInputBoundary):UserOutputBoundary{
-
-        this.isValidItens(input);
         
         const userCreate = User.create({
             id: input.id,
@@ -32,11 +30,4 @@ export class CreateUser{
             ]
         };
     }
-
-    isValidItens(input: UserInputBoundary){
-        for (const item in input){
-            console.log(item);
-        }
-    }
-
 }

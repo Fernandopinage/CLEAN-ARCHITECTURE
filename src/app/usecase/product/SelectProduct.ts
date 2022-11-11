@@ -1,12 +1,20 @@
-import { Product } from "../../../domain/entities/Product";
-import { IProductParms } from "../../../domain/entities/repositore/IProductParms";
+import { IProduct } from "../../intefaces/IProduct";
+import { UserOutputBoundary } from "./boundaries/ProductOutBoundary";
 
-export class SelectProduct implements Product{
 
-    async execute(): Promise<IProductParms> {
+export class SelectAllProduct implements IProduct{
+
+
+    async execute():Promise<UserOutputBoundary> {
 
         return {
-            id:1, name:'luiz',price: 123
+            statusCode: 200,
+            mensage: 'sucesso',
+            result: [{
+                id:1,
+                name:'luiz',
+                price: 123
+         }]
         }
     }
 

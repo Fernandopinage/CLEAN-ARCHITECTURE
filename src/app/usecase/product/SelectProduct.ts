@@ -1,16 +1,16 @@
 import { IProduct } from "../../intefaces/IProduct";
-import { UserOutputBoundary } from "./boundaries/ProductOutBoundary";
+import { Request, Response } from "../../protocols/http/boundaries";
 
 
 export class SelectAllProduct implements IProduct{
 
 
-    async execute():Promise<UserOutputBoundary> {
+    async execute():Promise<Response> {
 
         return {
             statusCode: 200,
             mensage: 'sucesso',
-            result: [{
+            body: [{
                 id:1,
                 name:'luiz',
                 price: 123

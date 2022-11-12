@@ -1,25 +1,24 @@
-import { UserInputBoundary } from './boundaries/UserInputBoundary'
-import { UserOutputBoundary } from './boundaries/UserOutputBoundary'
+import { Request, Response } from '../../protocols/http/boundaries';
 import { User } from '../../../domain/entities/User';
 
 export class CreateUser{
 
-    execute(input:UserInputBoundary):UserOutputBoundary{
+    execute(input:Request):Response{
         
         const userCreate = User.create({
-            id: input.id,
-            name: input.name,
-            mail: input.mail,
-            age: input.age,
-            sexo: input.sexo,
-            cpf: input.cpf,
-            rg: input.rg,
+            id: input.body.id,
+            name: input.body.name,
+            mail: input.body.mail,
+            age: input.body.age,
+            sexo: input.body.sexo,
+            cpf: input.body.cpf,
+            rg: input.body.rg,
         }); 
         
         return {
             statusCode: 200,
             mensage: 'User ',
-            result:[{
+            body:[{
                 name:userCreate.name,
                 mail: userCreate.mail,
                 age:userCreate.age,

@@ -1,3 +1,3 @@
-export interface IProduct {
+export interface IUser {
     execute(): Promise<object>
 }

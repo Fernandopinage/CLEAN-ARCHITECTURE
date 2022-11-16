@@ -1,4 +1,4 @@
-import { IProduct } from "../../intefaces/IProduct";
+import { IProduct } from "../../interfaces/IProduct";
 import { Request, Response } from "../../protocols/http/boundaries";
 
 

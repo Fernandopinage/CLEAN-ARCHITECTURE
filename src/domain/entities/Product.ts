@@ -1,4 +1,4 @@
-import {IProductParms} from '../entities/repositore/IProductParms'
+import {IProductParms} from './interfaces/IProductParms'
 
 export class Product {
     id: number | undefined;

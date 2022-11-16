@@ -1,4 +1,4 @@
-import { IUser } from "../../intefaces/IUser";
+import { IUser } from "../../interfaces/IUser";
 import { Request, Response } from '../../protocols/http/boundaries';
 
 class SelectUser implements IUser{

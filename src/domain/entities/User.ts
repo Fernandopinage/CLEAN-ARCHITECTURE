@@ -1,4 +1,4 @@
-import { IUserParms } from './repositore/IUserParms'
+import { IUserParms } from './interfaces/IUserParms'
 
 export class User{
 

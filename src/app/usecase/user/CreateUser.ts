@@ -16,7 +16,7 @@ export class CreateUser{
         }); 
         
         return {
-            statusCode: 200,
+            statusCode: 201,
             mensage: 'User ',
             body:[{
                 name:userCreate.name,

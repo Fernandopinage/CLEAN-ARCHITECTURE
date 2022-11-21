@@ -1,9 +1,10 @@
-import { Request } from '../protocols/http/boundaries'
-export class MailValid  {
+import { IEmailValid } from '../interfaces/IEmailValid';
 
-   
-    static isMailValid(parm:Request): boolean {
-        if (!parm || !parm.body.mail)
+
+export class EmailValid implements IEmailValid{
+  
+    isMailValid(parm:string): boolean {
+        if (!parm)
         {
             return false;
         }

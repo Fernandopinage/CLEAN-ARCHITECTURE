@@ -1,12 +1,13 @@
 import { Request, Response } from '../../protocols/http/boundaries';
 import { User } from '../../../domain/entities/User';
-import { MailValid } from '../MailValid';
+import { EmailValid } from '../MailValid';
+
 
 export class CreateUser{
 
     execute(input:Request):Response{
        
-        if(!MailValid.isMailValid(input)){
+        if(!new EmailValid().isMailValid(input.body.mail)){
             return {
                 statusCode: 404,
                 mensage: 'O email não é valido ',

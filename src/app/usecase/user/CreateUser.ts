@@ -1,10 +1,18 @@
 import { Request, Response } from '../../protocols/http/boundaries';
 import { User } from '../../../domain/entities/User';
+import { MailValid } from '../MailValid';
 
 export class CreateUser{
 
     execute(input:Request):Response{
-        
+       
+        if(!MailValid.isMailValid(input)){
+            return {
+                statusCode: 404,
+                mensage: 'O email não é valido ',
+                body:[]
+            };  
+        }
         const userCreate = User.create({
             id: input.body.id,
             name: input.body.name,

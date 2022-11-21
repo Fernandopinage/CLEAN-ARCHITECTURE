@@ -1,6 +1,6 @@
 import { Request, Response } from '../../protocols/http/boundaries';
 import { User } from '../../../domain/entities/User';
-import { EmailValid } from '../MailValid';
+import { EmailValid } from '../../adapter/MailValid';
 
 
 export class CreateUser{

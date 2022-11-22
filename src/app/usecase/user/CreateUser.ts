@@ -23,19 +23,11 @@ export class CreateUser{
             cpf: input.body.cpf,
             rg: input.body.rg,
         }); 
-        
+        console.log('userCreate ------',userCreate)
         return {
             statusCode: 201,
             mensage: 'User ',
-            body:[{
-                name:userCreate.name,
-                mail: userCreate.mail,
-                age:userCreate.age,
-                sexo:userCreate.sexo,
-                cpf:userCreate.cpf,
-                rg:userCreate.rg
-            }
-            ]
+            body:[userCreate]
         };
     }
 }

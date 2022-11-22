@@ -38,6 +38,7 @@ describe('Validate the of mail', () => {
 
         const create = new CreateUser();
         const result = create.execute(parms);
+        // console.log('result++', result)
         expect(result.statusCode).toBe(201);
     });
   });

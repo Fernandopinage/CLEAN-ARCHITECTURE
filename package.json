@@ -1,34 +1,53 @@
 {
-  "name": "clean-architecture",
+  "name": "portal-dev-back",
   "version": "1.0.0",
-  "description": "",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: no test specified\" && exit 1",
-    "test": "jest --watchAll"
+    "dev": "nodemon -r tsconfig-paths/register src/main/index.ts",
+    "test:staged": "jest --passWithNoTests --runInBand --no-cache tests",
+    "test": "jest --watchAll",
+    "test:ci": "npm test -- --coverage",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
+    "db:create": "sequelize-cli db:create",
+    "db:migrations:create": "sequelize-cli migration:generate --name",
+    "db:migrations:execute": "sequelize-cli db:migrate"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fernandopinage/CLEAN-ARCHITECTURE.git"
+    "url": "https://gitlab.itriad.org.br/itriad-systems/gertec/g-smart/portal-dev-back.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Fernandopinage/CLEAN-ARCHITECTURE/issues"
-  },
-  "homepage": "https://github.com/Fernandopinage/CLEAN-ARCHITECTURE#readme",
   "devDependencies": {
-    "@types/mocha": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.42.1",
-    "@typescript-eslint/parser": "^5.42.1",
+    "@types/jest": "^29.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.27.0",
-    "jest": "^29.3.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "express": "^4.18.2",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.20",
+    "prettier": "2.7.1",
+    "sequelize-cli": "^6.5.2",
     "ts-jest": "^29.0.3",
-    "typescript": "^4.8.4"
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "^4.9.3"
+  },
+  "engines": {
+    "node": ">=18.12.1",
+    "npm": ">=8.19.2"
   },
   "dependencies": {
     "@types/express": "^4.17.14",
-    "express": "^4.18.2"
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.8"
   }
 }

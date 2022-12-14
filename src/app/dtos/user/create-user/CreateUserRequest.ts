@@ -1,7 +1,8 @@
-export type UserCreateRequest = {
+export type CreateUserRequest = {
 	name: string;
-	organization: string;
+	idCompany: number;
 	office: string;
 	email: string;
 	password: string;
+	acceptedReceiveEmail: boolean;
 };

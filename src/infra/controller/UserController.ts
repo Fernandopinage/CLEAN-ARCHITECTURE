@@ -1,16 +1,9 @@
-import { UserCreateRequest, UserCreateResponse } from '@/app/dtos';
+import { CreateUserRequest, CreateUserResponse } from '@/app/dtos';
 import { Request, Response } from '@/app/protocols/https/boundaries';
 import { ICreateUserUseCase } from '../protocols/ICreateUserUseCase';
-export class UserController {
+export default class UserController {
 	constructor(private createUserUseCase: ICreateUserUseCase) {}
-
-	index() {
-		return true;
-	}
-	show() {
-		return true;
-	}
-	create(req: Request<UserCreateRequest>): Promise<Response<UserCreateResponse>> {
+	create(req: Request<CreateUserRequest>): Promise<Response<CreateUserResponse>> {
 		return this.createUserUseCase.execute(req);
 	}
 }

@@ -1,12 +1,13 @@
 import { sequelize } from '@/infra/database/sequelize/config/database';
 import { DataTypes, Model } from 'sequelize';
+import { Company } from './Company';
 
 export class User extends Model {}
 
 User.init(
 	{
 		id: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.BIGINT,
 			autoIncrement: true,
 			primaryKey: true
 		},
@@ -14,8 +15,8 @@ User.init(
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		organization: {
-			type: DataTypes.STRING,
+		id_company: {
+			type: DataTypes.BIGINT,
 			allowNull: false
 		},
 		office: {
@@ -29,10 +30,24 @@ User.init(
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		receive_email: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false
 		}
 	},
 	{
-		tableName: 'users',
-		sequelize
+		sequelize,
+		modelName: 'user',
+		tableName: 'users'
 	}
 );
+User.belongsTo(Company, {
+	as: 'company',
+	foreignKey: 'id_company'
+});
+
+Company.hasMany(User, {
+	as: 'users',
+	foreignKey: 'id'
+});

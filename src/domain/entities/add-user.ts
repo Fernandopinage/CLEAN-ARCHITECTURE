@@ -1,9 +1,9 @@
-import { IUserParms } from '../protocol/user-parms';
+import { IUserParams } from '../protocol/user-params';
 
 export class UserDomain {
-	constructor(public params: IUserParms) {}
+	constructor(public params: IUserParams) {}
 
-	static create(params: IUserParms): UserDomain {
+	static create(params: IUserParams): UserDomain {
 		return new UserDomain(params);
 	}
 }

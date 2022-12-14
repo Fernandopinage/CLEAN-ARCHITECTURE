@@ -1,3 +1,5 @@
+import CompanyRoute from '@/infra/routes/CompanyRoute';
+import CompanySizeRoute from '@/infra/routes/CompanySizeRoute';
 import UserRoute from '@/infra/routes/UserRoute';
 import * as dotenv from 'dotenv';
 import express from 'express';
@@ -19,20 +21,22 @@ export default class Route {
 	private constructor() {
 		this.app = express();
 		this.setMiddlewares();
-		this.setUserRoute();
+		this.setRoutes();
 	}
 
 	private setMiddlewares(): void {
 		this.app.use(express.json());
 	}
 
-	private setUserRoute(): void {
+	private setRoutes(): void {
 		UserRoute.route(this.app);
+		CompanyRoute.route(this.app);
+		CompanySizeRoute.route(this.app);
 	}
 
 	listen() {
 		this.app.listen(port, () => {
-			console.log('http://localhost:3000/');
+			console.log(`http://localhost:${port}/`);
 		});
 	}
 }

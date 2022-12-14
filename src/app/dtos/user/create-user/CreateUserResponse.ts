@@ -1,6 +1,6 @@
-export type UserCreateResponse = {
+export type CreateUserResponse = {
 	name: string;
-	organization: string;
+	idCompany: number;
 	office: string;
 	email: string;
 };

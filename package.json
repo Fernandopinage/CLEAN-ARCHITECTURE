@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "nodemon -r tsconfig-paths/register src/main/index.ts",
     "test:staged": "jest --passWithNoTests --runInBand --no-cache tests",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --verbose",
     "test:ci": "npm test -- --coverage",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
     "db:create": "sequelize-cli db:create",
     "db:migrations:create": "sequelize-cli migration:generate --name",
-    "db:migrations:execute": "sequelize-cli db:migrate"
+    "db:migrations:execute": "sequelize-cli db:migrate",
+    "db:seed:create": "sequelize-cli seed:generate --name",
+    "db:seed:execute": "sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",
@@ -22,9 +25,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.13",
     "@types/jest": "^29.2.3",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
@@ -35,11 +42,12 @@
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "2.7.1",
+    "rimraf": "^3.0.2",
     "sequelize-cli": "^6.5.2",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "engines": {
     "node": ">=18.12.1",
@@ -47,6 +55,7 @@
   },
   "dependencies": {
     "@types/express": "^4.17.14",
+    "cors": "^2.8.5",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.8"
   }

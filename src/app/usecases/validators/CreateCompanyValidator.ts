@@ -15,10 +15,11 @@ export default class CreateCompanyValidator implements ICreateCompanyValidator {
 				errors: [CompanyErrors.emailRegistered]
 			};
 		}
+
 		if (!PhoneUtils.isValid(input.telephone)) {
 			return {
 				statusCode: 400,
-				errors: [CompanyErrors.PhoneUtilsRegisterd]
+				errors: [CompanyErrors.phoneRegisterd]
 			};
 		}
 

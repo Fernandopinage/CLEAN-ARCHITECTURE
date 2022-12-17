@@ -1,6 +1,8 @@
 export interface ICompanyGateway {
 	create(input: ICompanyGateway.CreateCompanyData): Promise<ICompanyGateway.CreateResultData>;
 	listByEmail(input: string): Promise<ICompanyGateway.CreateResultData[]>;
+	list(): Promise<ICompanyGateway.ListCompaniesData[]>;
+	hasCompany(input: number): Promise<boolean>;
 }
 
 export namespace ICompanyGateway {
@@ -38,5 +40,9 @@ export namespace ICompanyGateway {
 		access_product: boolean;
 		receive_email: boolean;
 		signature_nda: boolean;
+	};
+	export type ListCompaniesData = {
+		id: number;
+		name: string;
 	};
 }

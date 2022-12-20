@@ -1,6 +1,6 @@
-import { CreateCompanyRequest, CreateCompanyResponse } from '../../dtos';
-import { Response } from '../https/boundaries';
+import { CreateCompanyRequest } from '@/app/dtos';
+import { ResultValidator } from '@/app/validators/dto/ResultValidator';
 
 export interface ICreateCompanyValidator {
-	validate(input: CreateCompanyRequest): Promise<Response<CreateCompanyResponse>>;
+	validate(input: CreateCompanyRequest): Promise<ResultValidator>;
 }

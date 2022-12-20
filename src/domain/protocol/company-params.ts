@@ -1,6 +1,7 @@
 export interface ICompanyParams {
 	id?: number;
 	id_company_size: number;
+	cnpj: string;
 	name: string;
 	segment: string;
 	telephone: string;

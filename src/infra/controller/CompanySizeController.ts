@@ -1,10 +1,19 @@
-import { CreateCompanySizeRequest, CreateCompanySizeResponse } from '@/app/dtos';
-import { Request, Response } from '@/app/protocols/https/boundaries';
+import { CreateCompanySizeRequest, CreateCompanySizeResponse, HttpRequest, HttpResponse } from '@/app/dtos';
+import CommonErrors from '@/app/errors/CommonErrors';
+import StatusCode from '@/app/status/StatusCode';
 import { ICreateCompanySizeUseCase } from '../protocols/ICreateCompanySizeUseCase';
 
 export default class CompanySizeController {
 	constructor(private CreateCompanySizeUseCase: ICreateCompanySizeUseCase) {}
-	create(req: Request<CreateCompanySizeRequest>): Promise<Response<CreateCompanySizeResponse>> {
-		return this.CreateCompanySizeUseCase.execute(req);
+	async create(req: HttpRequest<CreateCompanySizeRequest>): Promise<HttpResponse<CreateCompanySizeResponse>> {
+		try {
+			return this.CreateCompanySizeUseCase.execute(req);
+		} catch (error) {
+			console.log(error);
+			return {
+				statusCode: StatusCode.serveError,
+				errors: [CommonErrors.serverError]
+			};
+		}
 	}
 }

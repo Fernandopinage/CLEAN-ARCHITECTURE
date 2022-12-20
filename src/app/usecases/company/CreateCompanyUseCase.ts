@@ -1,10 +1,11 @@
-import { CreateCompanyRequest, CreateCompanyResponse } from '@/app/dtos';
+import { CreateCompanyRequest, CreateCompanyResponse, HttpRequest, HttpResponse } from '@/app/dtos';
 import { ICompanyGateway } from '@/app/protocols/gateways/ICompanyGateway';
 import { IEncryptGateway } from '@/app/protocols/gateways/IEncryptGateway';
-import { Request, Response } from '@/app/protocols/https/boundaries';
 import { ICreateCompanyValidator } from '@/app/protocols/validators/ICreateCompanyValidator';
+import StatusCode from '@/app/status/StatusCode';
+import { PhoneUtils } from '@/app/utils';
+import CnpjUtils from '@/app/utils/CnpjUtils';
 import { ICreateCompanyUseCase } from '@/infra/protocols/ICreateCompanyUseCase';
-import PhoneUtils from '../../utils/PhoneUtils';
 
 export default class CreateCompanyUseCase implements ICreateCompanyUseCase {
 	constructor(
@@ -13,13 +14,15 @@ export default class CreateCompanyUseCase implements ICreateCompanyUseCase {
 		private validator: ICreateCompanyValidator
 	) {}
 
-	async execute(input: Request<CreateCompanyRequest>): Promise<Response<CreateCompanyResponse>> {
-		const responseValidate = await this.validator.validate(input.body);
-		if (responseValidate.statusCode !== 0) {
-			return responseValidate;
+	async execute(input: HttpRequest<CreateCompanyRequest>): Promise<HttpResponse<CreateCompanyResponse>> {
+		const resultValidator = await this.validator.validate(input.body);
+		if (resultValidator.statusCode !== 0) {
+			return resultValidator;
 		}
+
 		const result = await this.companyGateway.create({
 			id_company_size: input.body.idCompanySize,
+			cnpj: CnpjUtils.removeCharacters(input.body.cnpj),
 			name: input.body.name,
 			segment: input.body.segment,
 			telephone: PhoneUtils.removeCharacters(input.body.telephone),
@@ -37,9 +40,10 @@ export default class CreateCompanyUseCase implements ICreateCompanyUseCase {
 		});
 
 		return {
-			statusCode: 201,
+			statusCode: StatusCode.created,
 			body: {
 				idCompanySize: result.id_company_size,
+				cnpj: result.cnpj,
 				name: result.name,
 				segment: result.segment,
 				telephone: result.telephone,

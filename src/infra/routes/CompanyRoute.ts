@@ -17,6 +17,7 @@ class CompanyRoute {
 				{
 					body: {
 						idCompanySize: req.body.idCompanySize,
+						cnpj: req.body.cnpj,
 						name: req.body.name,
 						segment: req.body.segment,
 						telephone: req.body.telephone,

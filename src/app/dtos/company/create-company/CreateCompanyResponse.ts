@@ -1,5 +1,6 @@
 export type CreateCompanyResponse = {
 	idCompanySize: number;
+	cnpj: string;
 	name: string;
 	segment: string;
 	telephone: string;

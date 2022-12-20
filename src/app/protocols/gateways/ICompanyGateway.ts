@@ -8,6 +8,7 @@ export interface ICompanyGateway {
 export namespace ICompanyGateway {
 	export type CreateResultData = {
 		id_company_size: number;
+		cnpj: string;
 		name: string;
 		segment: string;
 		telephone: string;
@@ -26,6 +27,7 @@ export namespace ICompanyGateway {
 
 	export type CreateCompanyData = {
 		id_company_size: number;
+		cnpj: string;
 		name: string;
 		segment: string;
 		telephone: string;

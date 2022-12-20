@@ -1,8 +1,8 @@
-import { CreateUserRequest, CreateUserResponse } from '@/app/dtos';
+import { CreateUserRequest, CreateUserResponse, HttpRequest, HttpResponse } from '@/app/dtos';
 import { IEncryptGateway } from '@/app/protocols/gateways/IEncryptGateway';
 import { IUserGateway } from '@/app/protocols/gateways/IUserGateway';
-import { Request, Response } from '@/app/protocols/https/boundaries';
 import { ICreateUserValidator } from '@/app/protocols/validators/ICreateUserValidator';
+import StatusCode from '@/app/status/StatusCode';
 import { ICreateUserUseCase } from '@/infra/protocols/ICreateUserUseCase';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
@@ -12,7 +12,7 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 		private encryptGateway: IEncryptGateway
 	) {}
 
-	async execute(input: Request<CreateUserRequest>): Promise<Response<CreateUserResponse>> {
+	async execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>> {
 		const responseValidate = await this.validator.validate(input.body);
 		if (responseValidate.statusCode !== 0) {
 			return responseValidate;
@@ -28,7 +28,7 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 		});
 
 		return {
-			statusCode: 201,
+			statusCode: StatusCode.created,
 			body: {
 				name: result.name,
 				idCompany: result.id_company,

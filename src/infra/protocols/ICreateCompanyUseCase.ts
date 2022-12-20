@@ -1,6 +1,5 @@
-import { CreateCompanyRequest, CreateCompanyResponse } from '@/app/dtos';
-import { Request, Response } from '@/app/protocols/https/boundaries';
+import { CreateCompanyRequest, CreateCompanyResponse, HttpRequest, HttpResponse } from '@/app/dtos';
 
 export interface ICreateCompanyUseCase {
-	execute(input: Request<CreateCompanyRequest>): Promise<Response<CreateCompanyResponse>>;
+	execute(input: HttpRequest<CreateCompanyRequest>): Promise<HttpResponse<CreateCompanyResponse>>;
 }

@@ -1,5 +1,6 @@
 export type CreateCompanyRequest = {
 	idCompanySize: number;
+	cnpj: string;
 	name: string;
 	segment: string;
 	telephone: string;

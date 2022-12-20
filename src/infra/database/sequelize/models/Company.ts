@@ -14,6 +14,10 @@ Company.init(
 			type: DataTypes.BIGINT,
 			allowNull: false
 		},
+		cnpj: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false

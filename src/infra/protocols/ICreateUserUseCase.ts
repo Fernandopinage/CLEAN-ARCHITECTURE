@@ -1,6 +1,5 @@
-import { CreateUserRequest, CreateUserResponse } from '@/app/dtos';
-import { Request, Response } from '@/app/protocols/https/boundaries';
+import { CreateUserRequest, CreateUserResponse, HttpRequest, HttpResponse } from '@/app/dtos';
 
 export interface ICreateUserUseCase {
-	execute(input: Request<CreateUserRequest>): Promise<Response<CreateUserResponse>>;
+	execute(input: HttpRequest<CreateUserRequest>): Promise<HttpResponse<CreateUserResponse>>;
 }

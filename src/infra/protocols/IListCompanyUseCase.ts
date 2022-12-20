@@ -1,5 +1,4 @@
-import { ListCompaniesResponse } from '@/app/dtos';
-import { Response } from '@/app/protocols/https/boundaries';
+import { HttpResponse, ListCompaniesResponse } from '@/app/dtos';
 export interface IListCompaniesUseCase {
-	execute(): Promise<Response<ListCompaniesResponse[]>>;
+	execute(): Promise<HttpResponse<ListCompaniesResponse[]>>;
 }

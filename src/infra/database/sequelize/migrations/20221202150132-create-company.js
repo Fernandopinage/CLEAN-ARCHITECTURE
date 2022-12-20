@@ -14,6 +14,10 @@ module.exports = {
 				type: Sequelize.BIGINT,
 				allowNull: false
 			},
+			cnpj: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
 			name: {
 				type: Sequelize.STRING,
 				allowNull: false

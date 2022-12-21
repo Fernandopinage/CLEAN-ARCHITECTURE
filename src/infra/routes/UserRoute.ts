@@ -20,11 +20,11 @@ class UserRoute {
 			const response = await user.create({
 				body: {
 					name: req.body.name,
-					idCompany: req.body.idCompany,
+					idCompany: req.body.id_company,
 					office: req.body.office,
 					password: req.body.password,
 					email: req.body.email,
-					acceptedReceiveEmail: req.body.acceptedReceiveEmail
+					acceptedReceiveEmail: req.body.receive_email
 				}
 			});
 

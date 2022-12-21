@@ -3,6 +3,7 @@ import { IEncryptGateway } from '@/app/protocols/gateways/IEncryptGateway';
 import { IUserGateway } from '@/app/protocols/gateways/IUserGateway';
 import { ICreateUserValidator } from '@/app/protocols/validators/ICreateUserValidator';
 import StatusCode from '@/app/status/StatusCode';
+import { UserDomain } from '@/domain/entities/add-user';
 import { ICreateUserUseCase } from '@/infra/protocols/ICreateUserUseCase';
 
 export default class CreateUserUseCase implements ICreateUserUseCase {
@@ -18,7 +19,7 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 			return responseValidate;
 		}
 
-		const result = await this.userGateway.create({
+		const data = UserDomain.create({
 			name: input.body.name,
 			id_company: input.body.idCompany,
 			office: input.body.office,
@@ -26,6 +27,8 @@ export default class CreateUserUseCase implements ICreateUserUseCase {
 			password: await this.encryptGateway.crypt(input.body.password),
 			receive_email: input.body.acceptedReceiveEmail
 		});
+
+		const result = await this.userGateway.create(data.params);
 
 		return {
 			statusCode: StatusCode.created,
